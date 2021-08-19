@@ -34,10 +34,35 @@ public class ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-			close(stmt);
-		
+		close(stmt);
+
 		return list;
 
+	}
+
+	public Product selectOne(Connection con, String id) {
+
+		PreparedStatement pstm = null;
+		String sql = "SELECT * FROM PRODUCT3 WHERE PRODUCT_ID =?";
+		ResultSet rs = null;
+		Product p = null;
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
+
+			rs = pstm.executeQuery();
+			if (rs.next()) {
+				p = new Product();
+				p.setProduct_id(rs.getString(1));
+				p.setP_name(rs.getString(2));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return p;
 	}
 
 }

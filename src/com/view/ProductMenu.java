@@ -29,10 +29,13 @@ public class ProductMenu {
 			switch (select) {
 			case 1:
 				List<Product> p = pc.selectAll();
-				for(Product pd : p) {
+				for (Product pd : p) {
 					System.out.println(pd.getProduct_id() + pd.getP_name());
 				}
-				
+			case 5:
+				Product pd = pc.selectOne();
+				System.out.println(pd.getProduct_id() + pd.getP_name());
+
 				break;
 			default:
 				System.out.println("종료");

@@ -16,5 +16,10 @@ public class ProductBiz {
 		return pd.selectAll(con);
 
 	}
+	
+	public Product selectOne(String id) {
+	Connection con = getConnection();
+	return pd.selectOne(con,id);
 
+	}
 }
